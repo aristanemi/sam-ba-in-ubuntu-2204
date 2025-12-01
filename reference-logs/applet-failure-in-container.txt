@@ -1,0 +1,46 @@
+abhi@abhi-ThinkPad-E480:~/bind-vol/sam-ba-in-ubuntu-2204$ docker compose up --build
+[+] Building 0.5s (21/21) FINISHED                                                                                                                                                                         
+ => [internal] load local bake definitions                                                                                                                                                            0.0s
+ => => reading from stdin 568B                                                                                                                                                                        0.0s
+ => [internal] load build definition from Dockerfile                                                                                                                                                  0.0s
+ => => transferring dockerfile: 1.13kB                                                                                                                                                                0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                                                                       0.3s
+ => [internal] load .dockerignore                                                                                                                                                                     0.0s
+ => => transferring context: 2B                                                                                                                                                                       0.0s
+ => [ 1/14] FROM docker.io/library/ubuntu:22.04@sha256:104ae83764a5119017b8e8d6218fa0832b09df65aae7d5a6de29a85d813da2fb                                                                               0.0s
+ => [internal] load build context                                                                                                                                                                     0.0s
+ => => transferring context: 63B                                                                                                                                                                      0.0s
+ => CACHED [ 2/14] RUN apt-get update                                                                                                                                                                 0.0s
+ => CACHED [ 3/14] RUN apt-get install -y     libgl1                                                                                                                                                  0.0s
+ => CACHED [ 4/14] RUN apt-get install -y     libxcb1     libxcb-icccm4     libxcb-image0     libxcb-keysyms1     libxcb-render-util0     libxcb-xinerama0     libxcb-xkb1                            0.0s
+ => CACHED [ 5/14] RUN apt-get install -y     libxkbcommon-x11-0     libxkbcommon0     libfontconfig1     libdbus-1-3     libfreetype6                                                                0.0s
+ => CACHED [ 6/14] RUN apt-get install -y     libx11-xcb1     libxcb-render0     libxcb-shape0     libxcb-shm0     libudev1     strace     tio                                                        0.0s
+ => CACHED [ 7/14] RUN apt-get install -y     libusb-1.0-0     usbutils     libglu1-mesa     libxrender1     libxext6                                                                                 0.0s
+ => CACHED [ 8/14] RUN apt-get update                                                                                                                                                                 0.0s
+ => CACHED [ 9/14] RUN apt-get install -y     libglib2.0-0 libglib2.0-bin libglib2.0-dev                                                                                                              0.0s
+ => CACHED [10/14] RUN apt-get install -y qtwayland5                                                                                                                                                  0.0s
+ => CACHED [11/14] RUN rm -rf /var/lib/apt/lists/*                                                                                                                                                    0.0s
+ => CACHED [12/14] RUN mkdir -p /opt/samba                                                                                                                                                            0.0s
+ => CACHED [13/14] ADD --unpack=true sam-ba_v3.9.2-linux_x86_64-22.04.tar.gz /opt/samba/                                                                                                              0.0s
+ => CACHED [14/14] WORKDIR /opt/samba/sam-ba_v3.9.2                                                                                                                                                   0.0s
+ => exporting to image                                                                                                                                                                                0.0s
+ => => exporting layers                                                                                                                                                                               0.0s
+ => => writing image sha256:f6c9a89b039b15be0798bc59e821f79e6aff26c01356a6c2688256ed8364e340                                                                                                          0.0s
+ => => naming to docker.io/library/gcuflashing:latest                                                                                                                                                 0.0s
+ => resolving provenance for metadata file                                                                                                                                                            0.0s
+[+] Running 1/1
+ ✔ gcuflashing:latest  Built                                                                                                                                                                          0.0s 
+Attaching to gcuflashing
+gcuflashing  | SAM-BA Command Line Interface Tool v3.9.2 (linux - x86_64-little_endian-lp64)
+gcuflashing  | Copyright 2025 Microchip Technology
+gcuflashing  | Opening secure port 'ttyACM0'
+gcuflashing  | Connection opened.
+gcuflashing  | SECURE<<RVER,0,0,0,0#
+gcuflashing  | SECURE>>
+gcuflashing  | SECURE<<SAPT,0,8e20,0,1#
+gcuflashing  | SECURE>>
+gcuflashing  | Could not upload applet (error -1: Command parsing error)
+gcuflashing  | Error: Applet nandflash could not be loaded
+gcuflashing  | Connection closed.
+gcuflashing  | Execution time: 21 ms
+gcuflashing exited with code 255

@@ -45,6 +45,7 @@ RUN apt-get install -y \
     libglib2.0-0 libglib2.0-bin libglib2.0-dev
 
 RUN apt-get install -y qtwayland5
+RUN apt-get install -y udev
 RUN rm -rf /var/lib/apt/lists/*
 
 # Create directory to copy SAM-BA into
