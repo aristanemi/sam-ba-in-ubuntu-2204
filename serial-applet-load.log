@@ -1,0 +1,35 @@
+$ docker compose run --rm gcuflashing 
+./sam-ba -l verbose:all -p serial:ttyACM0 -d sama5d35 -a nandflash:1:8:0xc1e04e07
+SAM-BA Command Line Interface Tool v3.9.2 (linux - x86_64-little_endian-lp64)
+Copyright 2025 Microchip Technology
+Opening serial port 'ttyACM0' (UART)
+SERIAL<<#
+SERIAL>>
+SERIAL<<N#
+SERIAL>>0a0d
+Connection opened.
+SERIAL<<wffffee40,#
+SERIAL>>c3075c8a
+SERIAL<<wffffee44,#
+SERIAL>>00435800
+Launch nandflash
+SERIAL<<S300000,4000#
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+TIMEOUT: [X modem] read byte.
+Error: Cannot read property 'codeAddr' of undefined
+Connection closed.
+Execution time: 8205 ms
