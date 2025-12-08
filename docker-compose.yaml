@@ -5,23 +5,39 @@ services:
       dockerfile: Dockerfile
     image: gcuflashing:latest
     container_name: gcuflashing
+
     network_mode: host
+
+    privileged: true
     group_add:
       - dialout
-    privileged: true
+
     devices:
       - "/dev/ttyUSB0:/dev/ttyUSB0"
       - "/dev/ttyACM0:/dev/ttyACM0"
-    security_opt:
-      - apparmor=unconfined
-      - seccomp=unconfined
-    cap_add:
-      - SYS_ADMIN
-      - SYS_RAWIO
-    entrypoint:
-      - "./entrypoint.sh"
+      # Required for USB control transfers (EP0)
+      - "/dev/bus/usb:/dev/bus/usb"
+
     volumes:
       - ./entrypoint.sh:/opt/samba/sam-ba_v3.9.2/entrypoint.sh
       - /dev/bus/usb:/dev/bus/usb
+
+    # (Restored from your original file)
+    entrypoint:
+      - "./entrypoint.sh"
+
     tty: true
     stdin_open: true
+
+    security_opt:
+      - apparmor=unconfined
+      - seccomp=unconfined
+
+    cap_add:
+      - SYS_ADMIN
+      - SYS_RAWIO
+
+    # Allow raw USB access including EP0
+    device_cgroup_rules:
+      - 'c 189:* rmw'   # USB bus (all endpoints)
+      - 'c 166:* rmw'   # ttyACM devices
