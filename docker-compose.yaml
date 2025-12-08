@@ -13,31 +13,12 @@ services:
       - dialout
 
     devices:
-      - "/dev/ttyUSB0:/dev/ttyUSB0"
-      - "/dev/ttyACM0:/dev/ttyACM0"
-      # Required for USB control transfers (EP0)
-      - "/dev/bus/usb:/dev/bus/usb"
+      - /dev:/dev
+      - /run/udev:/run/udev
 
     volumes:
       - ./entrypoint.sh:/opt/samba/sam-ba_v3.9.2/entrypoint.sh
-      - /dev/bus/usb:/dev/bus/usb
+      - ./:/data
 
-    # (Restored from your original file)
     entrypoint:
       - "./entrypoint.sh"
-
-    tty: true
-    stdin_open: true
-
-    security_opt:
-      - apparmor=unconfined
-      - seccomp=unconfined
-
-    cap_add:
-      - SYS_ADMIN
-      - SYS_RAWIO
-
-    # Allow raw USB access including EP0
-    device_cgroup_rules:
-      - 'c 189:* rmw'   # USB bus (all endpoints)
-      - 'c 166:* rmw'   # ttyACM devices
